@@ -28,21 +28,27 @@
 			<!-- jQuery UI -->
 			<script type="text/javascript" src="js/jquery-ui.js"></script>
 
-			<!-- Search Autocomplete -->
+			<!-- Search Autocomplete for #zipsearch -->
 			<script type="text/javascript">
-				jQuery(document).ready(function(){
-					$('#zipsearch').autocomplete({source:'php/suggest.php', minLength:2});
-				});
+				jQuery(document).ready(								// Initalize jQuery after document is ready
+					function()										// When document is ready, do this function
+					{
+						$('#zipsearch').autocomplete(				// Autocomplete search results from tags with zipsearch ID
+							{
+								source:'php/suggest_zip.php',		// Use this as the source for autocompletion
+								minLength:2							// Do not autocomplete unless there are at least 2 charactors present
+							});
+					});
 			</script> 
-		
+
 
 	</head>
 
 	<body>
 
-		<form action="php/search.php">
+		<form action="php/search.php" method="POST">
 			Enter a Zipcode:
-			<input id="zipsearch" type="text" />
+			<input id="zipsearch" type="text" name="zipsearch"/>
 		</form>
 
 	</body>
