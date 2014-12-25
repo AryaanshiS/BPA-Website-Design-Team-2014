@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"auto",
+				"autocomplete"
+			],
+			[
+				"DB",
+				"DB_PASS"
+			],
+			[
+				"mysql",
+				"mysql_connect"
+			],
+			[
 				"for",
 				"foreach	foreach …"
 			]
@@ -15,7 +27,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 87.0,
+		"height": 225.0,
 		"selected_items":
 		[
 			[
@@ -23,21 +35,50 @@
 				"Package Control: Install Package"
 			],
 			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"git s",
+				"Git: Status"
+			],
+			[
+				"git init",
+				"Git: Init"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
 				"remove",
 				"Package Control: Remove Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
 			],
 			[
 				"instal",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 588.0
 	},
 	"console":
 	{
 		"height": 126.0,
 		"history":
 		[
+			"import urllib.request,os; pr='Preferences.sublime-settings'; ip='ignored_packages'; n='Package Control'; s=sublime.load_settings(pr); ig=s.get(ip); ig.append(n); s.set(ip,ig); sublime.save_settings('Preferences.sublime-settings'); pf=n+'.sublime-package'; urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler())); by=urllib.request.urlopen('https://packagecontrol.io/'+pf.replace(' ','%20')).read(); open(os.path.join(sublime.installed_packages_path(),pf),'wb').write(by); ig.remove(n); s.set(ip,ig); sublime.save_settings(pr); print('Package Control: 3.0.0 upgrade successful!')",
 			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
 	},
@@ -52,25 +93,44 @@
 	},
 	"expanded_folders":
 	[
-		"/Applications/AMPPS/www/bpa2014"
+		"/Applications/AMPPS/www/bpa2014",
+		"/Applications/AMPPS/www/bpa2014/php"
 	],
 	"file_history":
 	[
-		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Applications/AMPPS/www/bpa2014/php/suggest_zip.php",
 		"/Applications/AMPPS/www/bpa2014/index.php",
-		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Applications/AMPPS/www/bpa2014/php/connect.php",
+		"/Applications/AMPPS/www/bpa2014/php/search.php",
+		"/Applications/AMPPS/www/bpa2014/php/suggest.php",
+		"/Applications/AMPPS/www/bpa2014/search.php",
+		"/Users/justincampbell/Downloads/jQueryAutocomplete/jquery_autocomplete.html",
+		"/Users/justincampbell/Downloads/jQueryAutocomplete/suggest_zip.php",
+		"/Applications/AMPPS/www/bpa2014/zipSearch.php",
+		"/Applications/AMPPS/www/bpa2014/zipSearch,php",
 		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/User/bh_core.sublime-settings",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Applications/AMPPS/www/bpa2014/js/jquery-ui.js",
+		"/Applications/AMPPS/www/bpa2014/suggest_zip.php",
+		"/Users/justincampbell/Documents/School/BPA/Databases/Zip Code Database-compressed.csv",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/Users/justincampbell/Library/Application Support/Sublime Text 3/Packages/User/SublimeCodeIntel.sublime-settings",
 		"/Applications/AMPPS/www/bpa2014/bpa2014.sublime-project"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 95.0,
 		"where_history":
 		[
+			"search.php",
+			""
 		]
 	},
 	"find_state":
@@ -78,6 +138,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"a.",
+			"  "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -85,6 +147,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -102,11 +165,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -135,10 +198,14 @@
 	{
 		"height": 0.0
 	},
+	"output.git":
+	{
+		"height": 102.0
+	},
 	"project": "bpa2014.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -151,11 +218,11 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -169,7 +236,7 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
