@@ -29,26 +29,37 @@
 			<script type="text/javascript" src="js/jquery-ui.js"></script>
 
 			<!-- Search Autocomplete for #zipsearch -->
-			<script type="text/javascript">
-				jQuery(document).ready(								// Initalize jQuery after document is ready
-					function()										// When document is ready, do this function
-					{
-						$('#zipsearch').autocomplete(				// Autocomplete search results from tags with zipsearch ID
-							{
-								source:'php/suggest_zip.php',		// Use this as the source for autocompletion
-								minLength:2							// Do not autocomplete unless there are at least 2 charactors present
-							});
-					});
-			</script> 
+			<script type="text/javascript" src="js/zipsearch-autocomplete.js"></script>
 
+			<!-- Search Autocomplete for #citysearch -->
+			<script type="text/javascript" src="js/citysearch-autocomplete.js"></script>
 
 	</head>
 
 	<body>
 
 		<form action="php/search.php" method="POST">
-			Enter a Zipcode:
-			<input id="zipsearch" type="text" name="zipsearch"/>
+			
+			<table>
+				<tr>
+					<td>Enter Your Zipcode: </td>
+					<td>
+						<input type="text" id="zipsearch" name="zipsearch" />
+					</td>
+				</tr>
+				<tr>
+					<td>Enter You Destination: </td>
+					<td>
+						<input type="text" id="citysearch" name="citysearch" />
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<input type="submit">
+					</td>
+				</tr>
+			</table>
+
 		</form>
 
 	</body>

@@ -15,7 +15,7 @@ require('db_connect.php');
 //
 // mysql_real_escape_string(); <-- Formats strings to prevent SQL injections 
 
-$rs = mysql_query('SELECT zip, city, state, latitude, longitude FROM zips WHERE zip LIKE "'. mysql_real_escape_string($_REQUEST['term']) .'%" ORDER BY zip ASC LIMIT 0,10', $dblink);
+$rs = mysql_query('SELECT country, city, latitude, longitude FROM world_cities WHERE city LIKE "'. mysql_real_escape_string($_REQUEST['term']) .'%" ORDER BY city ASC LIMIT 0,10', $dblink);
 
 
 // Define empty array to be populated with results from search and sent to user as populated list
@@ -33,8 +33,8 @@ if ( $rs && mysql_num_rows($rs) )
     while( $row = mysql_fetch_array($rs, MYSQL_ASSOC) )
     {
         $data[] = array(
-            'label' => $row['city'] .', '. $row['state'] ,
-            'value' => $row['zip']
+            'label' => $row['city'] .', '. $row['country'] ,
+            'value' => $row['city']
         );
     }
 }
