@@ -24,12 +24,8 @@ $data = array();
 // Conditional: If there are results to return, continue
 if ( $rs && mysql_num_rows($rs) )
 {
-	// mysql_fetch_array($rs, MYSQL_ASSOC); <-- Searches database for zip code similar to user's input and returns values as associative array
-	// 											for key => value, key = column title and value = row value
-	// 											
-	// While $row is populated from associative array
-	// 		labels in the array will become: CITY, STATE
-	// 		example: Richmond, IN
+	// mysql_fetch_array($rs, MYSQL_ASSOC);
+    //      Searches database for zip code similar to user's input and returns values as associative array
     while( $row = mysql_fetch_array($rs, MYSQL_ASSOC) )
     {
         $data[] = array(

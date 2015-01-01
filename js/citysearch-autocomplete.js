@@ -3,7 +3,7 @@ jQuery(document).ready(
 	// When document is ready, do this function
 	function()
 	{
-		// Autocomplete search results from tags with zipsearch ID
+		// Autocomplete search results from tags with citysearch ID
 		$('#citysearch').autocomplete(
 			{
 				// Use this as the source for autocompletion
