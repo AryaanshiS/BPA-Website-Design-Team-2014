@@ -38,7 +38,7 @@
 
 	<body>
 
-		<form action="php/search.php" method="POST">
+		<form action="php/search.php" method="GET">
 			
 			<table>
 				<tr>

@@ -29,7 +29,7 @@ if ( $rs && mysql_num_rows($rs) )
     while( $row = mysql_fetch_array($rs, MYSQL_ASSOC) )
     {
         $data[] = array(
-            'label' => $row['city'] .', '. $row['state'] ,
+            'label' => $row['city'] .', '. $row['state'] .' ' . $row['zip'],
             'value' => $row['zip']
         );
     }

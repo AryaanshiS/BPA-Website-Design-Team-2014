@@ -30,7 +30,7 @@ if ( $rs && mysql_num_rows($rs) )
     {
         $data[] = array(
             'label' => $row['city'] .', '. $row['country'] ,
-            'value' => $row['city']
+            'value' => $row['city'] .', '. $row['country']
         );
     }
 }
