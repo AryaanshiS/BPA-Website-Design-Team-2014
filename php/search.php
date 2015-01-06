@@ -1,7 +1,6 @@
 <?php
 
-require("db_connect.php");
-require("functions.php");
+require("required_files.php");
 
 ////////////////////////
 // User Location Data //

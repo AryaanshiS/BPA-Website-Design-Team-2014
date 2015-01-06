@@ -3,8 +3,7 @@
 if ( !isset($_REQUEST['term']) )
     exit;
 
-// Connection
-require('db_connect.php');
+require("required_files.php");
 
 // Define Record Set $rs
 //
