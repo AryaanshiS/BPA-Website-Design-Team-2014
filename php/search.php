@@ -2,6 +2,11 @@
 
 require("required_files.php");
 
+
+
+
+
+
 ////////////////////////
 // User Location Data //
 ////////////////////////
@@ -23,6 +28,49 @@ $locationLat = $locationDataArray['latitude'];
 
 // User location longitude
 $locationLon = $locationDataArray['longitude'];
+
+
+
+
+
+
+///////////////////////////
+// Airport near location //
+///////////////////////////
+
+// Select all columns of the first result from search from airports table after ordering from shortest to longest distance
+$airportNearLocationSQL = "SELECT name, city, country, callsign";
+$airportNearLocationSQL .= " FROM airports";
+$airportNearLocationSQL .= " ORDER BY";
+
+// Difference in latitude, squared (distance formula part 1)
+$airportNearLocationSQL .= " (latitude - $locationLat) * (latitude - $locationLat)";
+
+// Plus
+$airportNearLocationSQL .= " +";
+
+// Difference in longitude, squared (distance formula part 2)
+$airportNearLocationSQL .= " (longitude - $locationLon) * (longitude - $locationLon)";
+
+// Select firtst result after sorting
+$airportNearLocationSQL .= " LIMIT 1";
+
+// Search Database for Airport nearest to destination
+$airportNearLocationQuery = mysql_query($airportNearLocationSQL, $dblink);
+
+// Array of query results
+$airportNearLocationDataArray = mysql_fetch_array($airportNearLocationQuery, MYSQL_ASSOC);
+
+// Seperate array into variables
+$airportNearLocationName = $airportNearLocationDataArray['name'];
+$airportNearLocationCity = $airportNearLocationDataArray['city'];
+$airportNearLocationCountry = $airportNearLocationDataArray['country'];
+$airportNearLocationCallsign = $airportNearLocationDataArray['callsign'];
+
+
+
+
+
 
 ///////////////////////////
 // User Destination Data //
@@ -48,22 +96,53 @@ $destinationDataArray = mysql_fetch_array($destinationQuery, MYSQL_ASSOC);
 $destinationLat = $destinationDataArray['latitude'];
 $destinationLon = $destinationDataArray['longitude'];
 
-///////////////////////////
-// Distance Calculation //
-///////////////////////////
 
-// Select first result from search from airports table after ordering from shortest to longest distance
-$sql = "SELECT name, latitude, logitude";
-$sql .= " FROM airports";
-$sql .= " ORDER BY";
+
+
+
+
+//////////////////////////////
+// Airport Near Destination //
+//////////////////////////////
+
+// Select all columns of the first result from search from airports table after ordering from shortest to longest distance
+$airportNearDestinationSQL = "SELECT name, city, country, callsign";
+$airportNearDestinationSQL .= " FROM airports";
+$airportNearDestinationSQL .= " ORDER BY";
 
 // Difference in latitude, squared (distance formula part 1)
-$sql .= " (latitude - [users destination latitude]) * (latitude - [users destination latitude])";
+$airportNearDestinationSQL .= " (latitude - $destinationLat) * (latitude - $destinationLat)";
 
 // Plus
-$sql .= " +";
+$airportNearDestinationSQL .= " +";
 
 // Difference in longitude, squared (distance formula part 2)
-$sql .= " (longitude - [users destination longitude]) * (longitude - [users destination longitude])";
+$airportNearDestinationSQL .= " (longitude - $destinationLon) * (longitude - $destinationLon)";
+
+// Select firtst result after sorting
+$airportNearDestinationSQL .= " LIMIT 1";
+
+// Search Database for Airport nearest to destination
+$airportNearDestinationQuery = mysql_query($airportNearDestinationSQL, $dblink);
+
+// Array of query results
+$airportNearDestinationDataArray = mysql_fetch_array($airportNearDestinationQuery, MYSQL_ASSOC);
+
+// Seperate array into variables
+$airportNearDestinationName = $airportNearDestinationDataArray['name'];
+$airportNearDestinationCity = $airportNearDestinationDataArray['city'];
+$airportNearDestinationCountry = $airportNearDestinationDataArray['country'];
+$airportNearDestinationCallsign = $airportNearDestinationDataArray['callsign'];
+
+
+
+
+
+///////////////////////////////////////////////////
+// Distance From Location To Destination Airport //
+///////////////////////////////////////////////////
+
+// Distance from location to destination
+$distance = distance($locationLat, $locationLon, $destinationLat, $destinationLon, "M");
 
 ?>
