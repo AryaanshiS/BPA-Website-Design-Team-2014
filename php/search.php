@@ -15,7 +15,12 @@ require("required_files.php");
 $locationZip = $_REQUEST['zipsearch'];
 
 // SQL Query
-$locationSQL = "SELECT zip, latitude, longitude FROM zips WHERE zip='". mysql_real_escape_string($locationZip) ."' ORDER BY zip ASC LIMIT 1";
+$locationSQL = "SELECT zip, latitude, longitude";
+$locationSQL .= " FROM zips";
+$locationSQL .= " WHERE zip='". mysql_real_escape_string($locationZip);
+$locationSQL .= "' ORDER BY zip";
+$locationSQL .= " ASC";
+$locationSQL .= " LIMIT 1";
 
 // Query Results
 $locationQuery = mysql_query($locationSQL, $dblink);
@@ -70,8 +75,6 @@ $airportNearLocationCallsign = $airportNearLocationDataArray['callsign'];
 
 
 
-
-
 ///////////////////////////
 // User Destination Data //
 ///////////////////////////
@@ -84,7 +87,13 @@ $destinationCity = $destinationInputArray[0];
 $destinationCountry = $destinationInputArray[1];
 
 // Search world_cities database for latitude and longitude where city and country are equal to user destination
-$destinationSQL = "SELECT latitude, longitude FROM world_cities WHERE city='". mysql_real_escape_string($destinationCity) ."' AND country='". mysql_real_escape_string($destinationCountry) ."' ORDER BY country ASC LIMIT 1";
+$destinationSQL = "SELECT latitude, longitude";
+$destinationSQL .= " FROM world_cities";
+$destinationSQL .= " WHERE city='". mysql_real_escape_string($destinationCity);
+$destinationSQL .= "' AND country='". mysql_real_escape_string($destinationCountry);
+$destinationSQL .= "' ORDER BY country";
+$destinationSQL .= " ASC";
+$destinationSQL .= " LIMIT 1";
 
 // Query Result
 $destinationQuery = mysql_query($destinationSQL, $dblink);
@@ -138,11 +147,159 @@ $airportNearDestinationCallsign = $airportNearDestinationDataArray['callsign'];
 
 
 
-///////////////////////////////////////////////////
-// Distance From Location To Destination Airport //
-///////////////////////////////////////////////////
+//////////////////
+// Ticket Title //
+//////////////////
+
+$ticketTitle = $airportNearLocationCity . " &#8594; " . $airportNearDestinationCity;
+
+
+
+
+
+
+//////////////////////////////////
+// Calculate Plane Ticket Price //
+//////////////////////////////////
 
 // Distance from location to destination
-$distance = distance($locationLat, $locationLon, $destinationLat, $destinationLon, "M");
+$flightDistance = distance($locationLat, $locationLon, $destinationLat, $destinationLon, "M");
+
+// 11 cents per mile
+$pricePerMile = .11;
+
+// Preliminary fees
+$preFlightCost = 50;
+
+// Preliminary fees + double the distance (round trip) multiplied by price per mile and rounded to 2 decimal places
+$ticketPrice = "$" . round($preFlightCost + ((2 * $flightDistance) * $pricePerMile), 2);
+
+
+
+
+
+///////////////////////////
+// Calculate Flight Time //
+///////////////////////////
+
+// Average mph of commercial flight
+$flightSpeed = 500;
+
+// Half of round trip distance divided by flight speed to get hours of flight, formatted for output
+$hoursOfFlight = "About <b>" . round(($flightDistance / 2) / $flightSpeed) . "</b> hours";
+
+
+
+
+
+///////////
+// Dates //
+///////////
+
+// Departure Date
+// MM/DD/YYYY to Day, Day-# Month, 4-Digit-Year
+$departureDate = date("D, jS F, Y", strtotime($_REQUEST['departureDate']));
+
+// Return Date
+// MM/DD/YYYY to Day, Day-# Month, 4-Digit-Year
+$returnDate = date("D, jS F, Y", strtotime($_REQUEST['returnDate']));
+
+
+
+
+
+
+//////////////////////////////
+// Random Departure Airline //
+//////////////////////////////
+
+// Search airlines database and return everything
+$departureAirlineSQL = "SELECT *";
+$departureAirlineSQL .= " FROM airlines";
+$departureAirlineSQL .= " ORDER BY RAND()";
+$departureAirlineSQL .= " LIMIT 1";
+
+// Departure airline query
+$departureAirlineQuery = mysql_query($departureAirlineSQL, $dblink);
+
+// Departure airline query array
+$departureAirlineDataArray = mysql_fetch_array($departureAirlineQuery, MYSQL_ASSOC);
+
+// Departure airline name
+$departureAirlineName = $departureAirlineDataArray['Name'];
+
+// Departure airline callsign
+$departureAirlineCallsign = $departureAirlineDataArray['Callsign'];
+
+
+
+
+
+////////////////////////////////
+// Random Destination Airline //
+////////////////////////////////
+
+// Search airlines database and return everything
+$destinationAirlineSQL = "SELECT *";
+$destinationAirlineSQL .= " FROM airlines";
+$destinationAirlineSQL .= " ORDER BY RAND()";
+$destinationAirlineSQL .= " LIMIT 1";
+
+// destination airline query
+$destinationAirlineQuery = mysql_query($destinationAirlineSQL, $dblink);
+
+// destination airline query array
+$destinationAirlineDataArray = mysql_fetch_array($destinationAirlineQuery, MYSQL_ASSOC);
+
+// destination airline name
+$destinationAirlineName = $destinationAirlineDataArray['Name'];
+
+// destination airline callsign
+$destinationAirlineCallsign = $destinationAirlineDataArray['Callsign'];
+
+
+
+
+
+/////////////////////////
+// Random Flight Times //
+/////////////////////////
+
+// First Departure Time
+
+$firstDepartureTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " AM";
+
+$firstArrivalTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " PM";
+
+$secondDepartureTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " AM";
+
+$secondArrivalTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " PM";
+
+
+
+
+
+////////////////////
+// Flight Numbers //
+////////////////////
+
+$departureFlightNumber = rand(0, 9999);
+
+$returnFlightNumber = rand(0, 9999);
+
+
+
+
+
+//////////////////
+// Print Ticket //
+//////////////////
+
+include('ticket.php');
+
+
+
+
+
 
 ?>

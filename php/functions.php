@@ -1,6 +1,9 @@
 <?php
 
-// Display associative array in table
+////////////////////////////////////////
+// Display associative array in table //
+////////////////////////////////////////
+
 function printArray($arrayToPrint){
 	echo "<table><tr><td><b>Key</b></td><td><b>Value</b></td></tr>";
 	foreach ($arrayToPrint as $key => $value) {
@@ -8,6 +11,14 @@ function printArray($arrayToPrint){
 	}
 	echo "</table>";
 }
+
+
+
+
+
+//////////////////////////////////////
+// Calculate distance on a 2D plane //
+//////////////////////////////////////
 
 function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 
