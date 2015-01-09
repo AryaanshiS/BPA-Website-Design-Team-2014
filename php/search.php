@@ -6,6 +6,10 @@ require("required_files.php");
 
 
 
+# AIRPLANE TICKET GENERATOR
+
+
+
 
 ////////////////////////
 // User Location Data //
@@ -267,13 +271,13 @@ $destinationAirlineCallsign = $destinationAirlineDataArray['Callsign'];
 
 // First Departure Time
 
-$firstDepartureTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " AM";
+$firstDepartureTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " AM";
 
-$firstArrivalTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " PM";
+$firstArrivalTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " PM";
 
-$secondDepartureTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " AM";
+$secondDepartureTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " AM";
 
-$secondArrivalTime = rand(1, 12) . ":" . round(rand(0, 59), -1) . " PM";
+$secondArrivalTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " PM";
 
 
 
@@ -296,6 +300,13 @@ $returnFlightNumber = rand(0, 9999);
 //////////////////
 
 include('ticket.php');
+
+
+
+
+
+# HOTEL GENERATOR
+
 
 
 
