@@ -1,4 +1,4 @@
-<table>
+<table width="100%" cellspacing="5" cellpadding="5" border="1px">
     <tr>
         <td colspan="6">
             <?php echo $ticketTitle; ?>

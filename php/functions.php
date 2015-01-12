@@ -1,8 +1,8 @@
 <?php
 
-////////////////////////////////////////
-// Display associative array in table //
-////////////////////////////////////////
+////////////////////////////////////////////
+// Print 1 Deimensional Associative Array //
+////////////////////////////////////////////
 
 function printArray($arrayToPrint){
 	echo "<table><tr><td><b>Key</b></td><td><b>Value</b></td></tr>";
@@ -11,6 +11,7 @@ function printArray($arrayToPrint){
 	}
 	echo "</table>";
 }
+
 
 
 

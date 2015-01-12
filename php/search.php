@@ -6,7 +6,13 @@ require("required_files.php");
 
 
 
-# AIRPLANE TICKET GENERATOR
+#######################################################################################
+#######################################################################################
+#
+# 									Ticket Generator
+# 
+#######################################################################################
+#######################################################################################
 
 
 
@@ -272,11 +278,8 @@ $destinationAirlineCallsign = $destinationAirlineDataArray['Callsign'];
 // First Departure Time
 
 $firstDepartureTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " AM";
-
 $firstArrivalTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " PM";
-
 $secondDepartureTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " AM";
-
 $secondArrivalTime = rand(1, 12) . ":" . rand(0, 5) . rand(0, 9) . " PM";
 
 
@@ -305,10 +308,266 @@ include('ticket.php');
 
 
 
-# HOTEL GENERATOR
+#######################################################################################
+#######################################################################################
+#
+# 									HOTEL GENERATOR
+# 
+#######################################################################################
+#######################################################################################
+
+//////////////////////////////////
+// Random Hotel Image Generator //
+//////////////////////////////////
+
+// Build array of files 
+$hotelImagesArray = scandir("../images/hotels");
+
+// Random Hotel Image width
+$hotelImageWidth = '';
+
+// Output random hotel image
+$randomHotelImage = "<img src=\"../images/hotels/" . $hotelImagesArray[rand(2, (count($hotelImagesArray) -1 ))] . "\" width=\"" . $hotelImageWidth . "px\" />";
 
 
 
+
+
+
+///////////////////////////////////
+// Get Destionation City Node ID //
+///////////////////////////////////
+
+// URL to send request to
+$osmQueryURL = "http://overpass-api.de/api/interpreter?data=";
+
+// Request for details on destination city as node
+$osmDestinationCityInfoQuery = "[out:json][timeout:25];area[name=\"" . $destinationCity . "\"];(node[place=\"city\"](area););out;";
+
+// Send request to Overpass API and get (json) info back
+$osmDestinationCityInfoQueryData = file_get_contents($osmQueryURL . urlencode($osmDestinationCityInfoQuery));
+
+// Convert requested json to associative array
+$osmDestinationCityInfoQueryDataArray = json_decode($osmDestinationCityInfoQueryData, TRUE);
+
+// Destionation city node ID
+$osmDestinationCityNodeID = $osmDestinationCityInfoQueryDataArray['elements'][0]['id'];
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////
+// Get List Of Hotels In Destination City & Print Random Name //
+////////////////////////////////////////////////////////////////
+
+// Query for list of hotels in destination city
+$osmHotelsInDestinationCityQuery = "[out:json];(node(" . $osmDestinationCityNodeID . ");node(around:5000)[\"tourism\"=\"hotel\"];);out;";
+
+// Send request to Overpass API and get (json) info back
+$osmHotelsInDestinationCityQueryData = file_get_contents($osmQueryURL . urlencode($osmHotelsInDestinationCityQuery));
+
+// Convert requested json to associative array
+$osmHotelsInDestinationCityQueryDataArray = json_decode($osmHotelsInDestinationCityQueryData, TRUE);
+
+// Create empty array to be populated
+$osmHotelsInDestinationCityList = array();
+
+// Creat array with hotels that have pretty names
+for ($i=1; $i < (count($osmHotelsInDestinationCityQueryDataArray['elements']) - 2); $i++) {
+
+	// Variable to check is name
+	$variableToCheck = $osmHotelsInDestinationCityQueryDataArray['elements'][$i]['tags']['name'];
+
+	// If the variable to check contains nothing but english charactors
+	if (!preg_match('/[^A-Za-z0-9]/', $variableToCheck)){
+
+		// If the variable is not empty
+		if (isset($variableToCheck)){
+
+			// Add name to array
+			array_push($osmHotelsInDestinationCityList, ucwords($variableToCheck));
+		}
+	}
+}
+
+// Random Hotel Name
+$hotelName = $osmHotelsInDestinationCityList[rand(0, (count($osmHotelsInDestinationCityList) - 1))];
+
+
+
+
+
+/////////////////////////
+// Random Hotel Rating //
+/////////////////////////
+
+// Build array of images
+$hotelStarsArray = scandir("../images/stars");
+
+// Nameof random image
+$hotelStarName = $hotelStarsArray[rand(3, (count($hotelStarsArray) -1 ))];
+
+// Number of stars for hotel
+$numberOfStars = substr($hotelStarName, 0, 1);
+
+// Hotel rating in decimal form
+$hotelRating = $numberOfStars . "." . rand(0, 9);
+
+// Random Star Image Width
+$hotelStarWidth = 100;
+
+// Random Star Image
+$hotelStar = "<img src=\"../images/stars/" . $hotelStarName . "\" width=\"" . $hotelStarWidth . "px\" />";
+
+
+
+
+
+///////////////////////////
+// Print Random Discount //
+///////////////////////////
+
+$discountInfo = "&#8595; Price is " . rand(0, 4) . rand(0, 9) . "% lower than usual.";
+
+
+
+
+
+//////////////////////////////////////////////////
+// Random Distance From Destination City Center //
+//////////////////////////////////////////////////
+
+$distanceInfo = "<b>" . rand(0, 2) . "." . rand(0, 9) . "</b> miles from the center of " . $destinationCity;
+
+
+
+
+
+////////////////////////////////////////////////
+// Random ammount of people viewing the hotel //
+////////////////////////////////////////////////
+
+$hotelView = "There are <b>" . rand(0, 10) . "</b> people viewing this hotel right now.";
+
+
+
+
+/////////////////////////////////
+// Hotel Price Based On Rating //
+/////////////////////////////////
+
+// Cost of hotel per night based on number of stars
+$pricePerStarPerNight = 30;
+
+// Random Price Calculaton
+$hotelPrice = "$" . ($pricePerStarPerNight * $numberOfStars);
+
+
+
+
+
+/////////////////
+// Print Hotel //
+/////////////////
+
+if($_REQUEST['hotel'] == "yes"){
+	include('hotel.php');	
+}
+
+
+
+
+
+#######################################################################################
+#######################################################################################
+#
+# 									CAR RENTAL
+# 
+#######################################################################################
+#######################################################################################
+	
+////////////////////////////////////
+// Selet Rental Car Company Logo //
+////////////////////////////////////
+
+
+$rentalCompany = $_REQUEST['rentalCompany'];
+$rentalCompanyImage = "<img src=\"../images/rentalCompanies/" . $rentalCompany . ".png\" />";
+
+
+
+
+
+///////////////////////////////////
+// Select Rental Car Type Image //
+///////////////////////////////////
+
+$rentalType = $_REQUEST['rentalCarClass'];
+$rentalTypeImage = "<img src=\"../images/rentalTypes/" . $rentalType . ".jpg\" />";
+
+
+
+
+
+///////////////////////////////
+// Miscellaneous Information //
+///////////////////////////////
+
+// Number of passengers
+$rentalPassengers = array(
+	'economy' => 4,
+	'compact' => 4,
+	'standard' => 4,
+	'van' => 8,
+	'suv' => 8,
+	'pickup' => 2,);
+
+// Number of bags that can be held
+$rentalLuggage = array(
+	'economy' => 2,
+	'compact' => 4,
+	'standard' => 2,
+	'van' => 6,
+	'suv' => 6,
+	'pickup' => 10,);
+
+// Number of doors
+$rentalDoor = array(
+	'economy' => 4,
+	'compact' => 4,
+	'standard' => 2,
+	'van' => 4,
+	'suv' => 4,
+	'pickup' => 2,);
+
+// Color of vehicle
+$rentalColor = array(
+	'economy' => 'Red',
+	'compact' => 'White',
+	'standard' => 'Silver',
+	'van' => 'Blue',
+	'suv' => 'Tan',
+	'pickup' => 'Greem',);
+
+// Rental Transmission
+$rentalTransArray = array(
+	'Automatic',
+	'Manual',);
+
+$rentalTrans = $rentalTransArray[rand(0, 1)];
+
+
+
+
+//////////////////////
+// Print Rental Car //
+//////////////////////
+
+if ($_REQUEST['rental'] == "yes") {
+	include('rentalCar.php');
+}
 
 
 
