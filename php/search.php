@@ -196,7 +196,7 @@ $ticketPrice = "$" . round($preFlightCost + ((2 * $flightDistance) * $pricePerMi
 $flightSpeed = 500;
 
 // Half of round trip distance divided by flight speed to get hours of flight, formatted for output
-$hoursOfFlight = "About <b>" . round(($flightDistance / 2) / $flightSpeed) . "</b> hours";
+$hoursOfFlight = "About <b>" . round(($flightDistance) / $flightSpeed) . "</b> hours";
 
 
 
