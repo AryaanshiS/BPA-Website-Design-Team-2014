@@ -1,7 +1,7 @@
-<table width="100%" cellspacing="5" cellpadding="5" border="1px">
+<table width="100%" cellspacing="5" cellpadding="5">
     <tr>
         <td rowspan="5">
-             <?php echo $randomHotelImage; ?>
+             <img src="<?php echo $randomHotelImage; ?>" width="500px" />
         </td>
         <td>
              <?php echo $hotelName; ?>

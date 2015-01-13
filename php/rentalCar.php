@@ -1,7 +1,7 @@
-<table width="100%" border="1" cellspacing="5" cellpadding="5">
+<table width="100%" cellspacing="5" cellpadding="5">
     <tr>
         <td>
-            <?php echo $rentalCompanyImage; ?>
+            <img src="<?php echo $rentalCompanyImage; ?>" wdith="500px" />
         </td>
         <td colspan="3">
             <?php echo ucwords($rentalCompany); ?>
@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td rowspan="3">
-            <?php echo $rentalTypeImage; ?>
+            <img src="<?php echo $rentalTypeImage; ?>" width="500px" />
         </td>
         <td colspan="3">
             <?php echo ucwords($rentalType); ?>

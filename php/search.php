@@ -323,11 +323,8 @@ include('ticket.php');
 // Build array of files 
 $hotelImagesArray = scandir("../images/hotels");
 
-// Random Hotel Image width
-$hotelImageWidth = '';
-
 // Output random hotel image
-$randomHotelImage = "<img src=\"../images/hotels/" . $hotelImagesArray[rand(2, (count($hotelImagesArray) -1 ))] . "\" width=\"" . $hotelImageWidth . "px\" />";
+$randomHotelImage = "../images/hotels/" . $hotelImagesArray[rand(2, (count($hotelImagesArray) -1 ))];
 
 
 
@@ -419,7 +416,7 @@ $hotelRating = $numberOfStars . "." . rand(0, 9);
 $hotelStarWidth = 100;
 
 // Random Star Image
-$hotelStar = "<img src=\"../images/stars/" . $hotelStarName . "\" width=\"" . $hotelStarWidth . "px\" />";
+$hotelStar = "../images/stars/" . $hotelStarName . "\" width=\"" . $hotelStarWidth . "px\" />";
 
 
 
@@ -494,7 +491,7 @@ if($_REQUEST['hotel'] == "yes"){
 
 
 $rentalCompany = $_REQUEST['rentalCompany'];
-$rentalCompanyImage = "<img src=\"../images/rentalCompanies/" . $rentalCompany . ".png\" />";
+$rentalCompanyImage = "../images/rentalCompanies/" . $rentalCompany . ".png";
 
 
 
@@ -505,7 +502,7 @@ $rentalCompanyImage = "<img src=\"../images/rentalCompanies/" . $rentalCompany .
 ///////////////////////////////////
 
 $rentalType = $_REQUEST['rentalCarClass'];
-$rentalTypeImage = "<img src=\"../images/rentalTypes/" . $rentalType . ".jpg\" />";
+$rentalTypeImage = "../images/rentalTypes/" . $rentalType . ".jpg";
 
 
 
