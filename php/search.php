@@ -458,7 +458,7 @@ $hotelView = "There are <b>" . rand(0, 10) . "</b> people viewing this hotel rig
 $pricePerStarPerNight = 30;
 
 // Random Price Calculaton
-$hotelPrice = "$" . ($pricePerStarPerNight * $numberOfStars);
+$hotelPrice = "$" . ($pricePerStarPerNight * $hotelRating);
 
 
 
