@@ -8,6 +8,13 @@
         </td>
         <td>Pick-up:</td>
         <td>Drop-off:</td>
+        <td rowspan="3">
+            <h1>
+                <?php echo $rentalPrice[$rentalType]; ?>
+                <br>
+                <span style="font-size: 12px">per day</span>
+            </h1>
+        </td>
     </tr>
     <tr>
         <td rowspan="3">

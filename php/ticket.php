@@ -12,7 +12,9 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td rowspan="5">
-            <?php echo $ticketPrice ?>
+            <h1>
+                <?php echo $ticketPrice ?>
+            </h1>
         </td>
     </tr>
     <tr>

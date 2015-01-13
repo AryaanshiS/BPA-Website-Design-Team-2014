@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
 <?php
 
 require("required_files.php");
@@ -294,6 +298,31 @@ $departureFlightNumber = rand(0, 9999);
 
 $returnFlightNumber = rand(0, 9999);
 
+// Flight Printed Below Wikipedia API Call
+
+
+
+
+#######################################################################################
+#######################################################################################
+#
+# 									Wikipedia API Call
+# 
+#######################################################################################
+#######################################################################################
+
+
+
+
+
+$html = @file_get_contents('http://en.wikipedia.org/wiki/' . $destinationCity);
+$dom = @DOMDocument::loadHTML($html);
+$xpath = new domXPath($dom);
+$query = "//div[@id=\"bodyContent\"]/div[@id=\"mw-content-text\"]/p";
+$results = $xpath->query($query);
+$htmlString = $dom->saveHTML($results->item(0));
+
+echo $htmlString;
 
 
 
@@ -554,6 +583,16 @@ $rentalTransArray = array(
 
 $rentalTrans = $rentalTransArray[rand(0, 1)];
 
+// Price of vehicle
+$rentalColor = array(
+	'economy' => 25,
+	'compact' => 29,
+	'standard' => 34,
+	'van' => 63,
+	'suv' => 80,
+	'pickup' => 80,);
+
+
 
 
 
@@ -569,3 +608,5 @@ if ($_REQUEST['rental'] == "yes") {
 
 
 ?>
+</body>
+</html>

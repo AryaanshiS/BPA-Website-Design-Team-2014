@@ -8,9 +8,7 @@
         </td>
         <td rowspan="5">
              <h1>
-                <center>
-                    <?php echo $hotelPrice; ?>
-                </center>
+                <?php echo $hotelPrice; ?>
              </h1>
         </td>
     </tr>
