@@ -416,8 +416,7 @@ $hotelRating = $numberOfStars . "." . rand(0, 9);
 $hotelStarWidth = 100;
 
 // Random Star Image
-$hotelStar = "../images/stars/" . $hotelStarName . "\" width=\"" . $hotelStarWidth . "px\" />";
-
+$hotelStar = "<img src=\"../images/stars/" . $hotelStarName . "\" width=\"" . $hotelStarWidth . "px\" />";
 
 
 
