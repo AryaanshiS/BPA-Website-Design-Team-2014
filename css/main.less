@@ -1,23 +1,49 @@
 // LESS Document
 
 // Varables
-
+@accent1: #E84C3D;
+@accent2: #FCF4C3;
+@borderColor: #505050;
 
 
 // Styles
 
 body{
 
-	table{
-
-		width: 33%;
-
-	}
-
-	.frontPage{
-
+	background-color: @accent1;
 		
+		img{
 
-	}
+			.border{
+				border: @borderColor 2px solid;
+			}
+		}
+
+		table{
+
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			background-color: white;
+			border: @borderColor 2px solid;
+			padding: 10px;
+
+			td{
+
+				vertical-align: top;
+
+			}
+
+		.search{
+
+			width: 980px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 20px;
+			
+			}
+
+		}
 
 }

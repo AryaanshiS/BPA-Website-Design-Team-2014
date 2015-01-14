@@ -1,7 +1,7 @@
 <table width="100%" cellspacing="5" cellpadding="5">
     <tr>
         <td>
-            <img src="<?php echo $rentalCompanyImage; ?>" wdith="500px" />
+            <img class="border" src="<?php echo $rentalCompanyImage; ?>" width="200px" />
         </td>
         <td colspan="3">
             <?php echo ucwords($rentalCompany); ?>
@@ -18,10 +18,10 @@
     </tr>
     <tr>
         <td rowspan="3">
-            <img src="<?php echo $rentalTypeImage; ?>" width="500px" />
+            <img src="<?php echo $rentalTypeImage; ?>" width="200px" />
         </td>
         <td colspan="3">
-            <?php echo ucwords($rentalType); ?>
+            <p>Type: <?php echo ucwords($rentalType); ?></p>
         </td>
         <td rowspan="3">
             <?php echo $departureDate; ?>
@@ -32,21 +32,21 @@
     </tr>
     <tr>
         <td>
-            <?php echo $rentalPassengers[$rentalType]; ?>
+            <p>Passengers: <?php echo $rentalPassengers[$rentalType]; ?></p>
         </td>
         <td>
-            <?php echo $rentalLuggage[$rentalType]; ?>
+            <p>Bags: <?php echo $rentalLuggage[$rentalType]; ?></p>
         </td>
         <td>
-            <?php echo $rentalDoor[$rentalType]; ?>
+            <p>Doors: <?php echo $rentalDoor[$rentalType]; ?></p>
         </td>
     </tr>
     <tr>
         <td>
-            <?php echo $rentalColor[$rentalType]; ?>
+            <p>Color: <?php echo $rentalColor[$rentalType]; ?></p>
         </td>
         <td colspan="2">
-            <?php echo $rentalTrans; ?>
+            <p>Transmission <?php echo $rentalTrans; ?></p>
         </td>
     </tr>
 </table>

@@ -1,7 +1,7 @@
 <table width="100%" cellspacing="5" cellpadding="5">
     <tr>
         <td colspan="6">
-            <?php echo $ticketTitle; ?>
+            <h1><?php echo $ticketTitle; ?></h1>
         </td>
     </tr>
     <tr>
@@ -11,7 +11,7 @@
         </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td rowspan="5">
+        <td rowspan="5" style="margin-top: auto; margin-bottom: auto;">
             <h1>
                 <?php echo $ticketPrice ?>
             </h1>

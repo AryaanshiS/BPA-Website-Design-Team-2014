@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+<!-- CSS -->
+
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="../css/jquery-ui.css">
+
+	<!-- jQuery UI Structure -->
+	<link rel="stylesheet" href="../css/jquery-ui.structure.css">
+
+	<!-- jQuery UI Theme -->
+	<link rel="stylesheet" href="../css/jquery-ui.theme.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="../css/main.css">
+
+
+
+<!-- JAVASCRIPT -->
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script type="text/javascript" src="../js/jquery-ui.js"></script>
+
+	<!-- Search Autocomplete for #zipsearch -->
+	<script type="text/javascript" src="../js/zipsearch-autocomplete.js"></script>
+
+	<!-- Search Autocomplete for #citysearch -->
+	<script type="text/javascript" src="../js/citysearch-autocomplete.js"></script>
+
+	<!-- Datepicker for #departureDate -->
+	<script type="text/javascript" src="../js/departureDate-datepicker.js"></script>
+
+	<!-- Datepicker for #returnDate -->
+	<script type="text/javascript" src="../js/returnDate-datepicker.js"></script>
+</head>
+
 <body>
+<div class="search">
 <?php
 
 require("required_files.php");
+
 
 
 
@@ -17,6 +57,7 @@ require("required_files.php");
 # 
 #######################################################################################
 #######################################################################################
+
 
 
 
@@ -322,7 +363,8 @@ $query = "//div[@id=\"bodyContent\"]/div[@id=\"mw-content-text\"]/p";
 $results = $xpath->query($query);
 $htmlString = $dom->saveHTML($results->item(0));
 
-echo $htmlString;
+echo "<table><tr><td><h1>" . $destinationCity . "<span style=\"color: grey; font-size: 22px;\"> from Wikipedia</span>" . "</h1></td></tr><tr><td>" . $htmlString . "</td></tr></table>";
+
 
 
 
@@ -584,13 +626,13 @@ $rentalTransArray = array(
 $rentalTrans = $rentalTransArray[rand(0, 1)];
 
 // Price of vehicle
-$rentalColor = array(
-	'economy' => 25,
-	'compact' => 29,
-	'standard' => 34,
-	'van' => 63,
-	'suv' => 80,
-	'pickup' => 80,);
+$rentalPrice = array(
+	'economy' => "$25",
+	'compact' => "$29",
+	'standard' => "$34",
+	'van' => "$63",
+	'suv' => "$80",
+	'pickup' => "$80",);
 
 
 
@@ -608,5 +650,6 @@ if ($_REQUEST['rental'] == "yes") {
 
 
 ?>
+</div>
 </body>
 </html>

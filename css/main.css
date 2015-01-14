@@ -1,3 +1,24 @@
+body {
+  background-color: #e84c3d;
+}
+body img .border {
+  border: #505050 2px solid;
+}
 body table {
-  width: 33%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: #505050 2px solid;
+  padding: 10px;
+}
+body table td {
+  vertical-align: top;
+}
+body table .search {
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 }

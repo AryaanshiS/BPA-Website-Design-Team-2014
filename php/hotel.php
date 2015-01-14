@@ -1,14 +1,15 @@
 <table width="100%" cellspacing="5" cellpadding="5">
     <tr>
-        <td rowspan="5">
+        <td rowspan="5" width="33%">
              <img src="<?php echo $randomHotelImage; ?>" width="500px" />
         </td>
-        <td>
+        <td width="33%">
              <?php echo $hotelName; ?>
         </td>
-        <td rowspan="5">
+        <td rowspan="5" valign="center">
              <h1>
-                <?php echo $hotelPrice; ?>
+                <?php echo $hotelPrice; ?> <br />
+                <span style="color: grey; font-size: 18;">per night</span>
              </h1>
         </td>
     </tr>
